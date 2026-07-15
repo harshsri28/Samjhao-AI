@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Explainer 📖</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <h1>Story <em>Explainer</em> 📖</h1>
+    <div class="topbar-actions">
+      <button id="themeToggle" class="icon-btn" title="Toggle dark mode">🌙</button>
+      <button id="historyBtn" class="icon-btn" title="Your past stories">🕘 History</button>
+    </div>
+  </header>
+  <p class="sub">Paste a website link, any text, or upload a PDF — get it explained like a simple story, in easy words.</p>
+
+  <textarea id="input" placeholder="Paste a website link (https://...) or any text here..."></textarea>
+
+  <div class="file-row">
+    <button id="uploadBtn" class="icon-btn">📎 Upload PDF / TXT</button>
+    <input type="file" id="fileInput" accept=".pdf,.txt" hidden>
+    <span id="fileChip" class="chip" hidden>📄 <span class="chip-name"></span> <button id="fileClear" title="Remove file">✕</button></span>
+  </div>
+
+  <div class="controls">
+    <div class="control-line">
+      <span class="control-label">Language</span>
+      <div class="pills" data-group="language">
+        <button data-value="english" class="active">English</button>
+        <button data-value="hindi">हिंदी</button>
+        <button data-value="hinglish">Hinglish</button>
+      </div>
+    </div>
+    <div class="control-line">
+      <span class="control-label">Length</span>
+      <div class="pills" data-group="length">
+        <button data-value="quick">⚡ Quick</button>
+        <button data-value="normal" class="active">Normal</button>
+        <button data-value="detailed">🔎 Detailed</button>
+      </div>
+    </div>
+    <div class="control-line">
+      <span class="control-label">Explain for</span>
+      <div class="pills" data-group="audience">
+        <button data-value="kid">🧒 A 10-year-old</button>
+        <button data-value="adult" class="active">🧑 An adult</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button id="go" class="btn">Explain it ✨</button>
+    <button id="stopBtn" class="btn secondary" hidden>⏹ Stop</button>
+    <button id="regenBtn" class="btn secondary" hidden>🔄 Regenerate</button>
+  </div>
+
+  <div class="voice-row">
+    <label><input type="checkbox" id="speakToggle" checked> 🔊 Bol kar sunao (speak aloud)</label>
+    <button id="stopVoice" class="icon-btn" hidden>⏹ Stop voice</button>
+  </div>
+
+  <div id="story"></div>
+
+  <div id="afterStory" class="after-story" hidden>
+    <button id="quizBtn" class="btn secondary">🎯 Test me</button>
+  </div>
+  <div id="quizBox" hidden></div>
+
+  <div id="chatBox" hidden>
+    <h3>Ask a follow-up question 💬</h3>
+    <div id="chatLog"></div>
+    <div class="chat-input">
+      <input id="chatQ" placeholder="e.g. What does that word mean?">
+      <button id="chatSend" class="btn secondary">Ask</button>
+    </div>
+  </div>
+
+  <p class="hint">Tip: works best with article/blog links. Pages that need login or heavy JavaScript may not load.</p>
+</div>
+
+<div id="drawerOverlay"></div>
+<aside id="historyDrawer">
+  <div class="drawer-head">
+    <h2>🕘 Your stories</h2>
+    <button id="drawerClose" class="icon-btn" title="Close">✕</button>
+  </div>
+  <div id="historyList"></div>
+  <div class="drawer-foot">
+    <button id="clearHistory" class="icon-btn">🗑 Clear all</button>
+  </div>
+</aside>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
