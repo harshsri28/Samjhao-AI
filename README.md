@@ -57,6 +57,15 @@ Then open **http://localhost:5050** in your browser.
 - Quiz JSON from an 8B model occasionally comes back malformed — the app asks you to just try again.
 - To use a different Ollama model later, change `OLLAMA_MODEL` at the top of `app.py`.
 
+## Privacy 🔒
+
+This app stores **no user data on the server** — no accounts, no database, no cookies.
+
+- **Your history stays in your browser.** Saved stories, chats, and preferences live in your browser's `localStorage` on your own device. The server never sees them, and "Clear all" in the History drawer wipes them.
+- **Nothing is written to disk.** Uploaded PDFs are parsed in memory and discarded; stories are streamed and forgotten.
+- **What leaves the server (only to do the job):** the content you ask about goes to the LLM backend you configured (local Ollama = nothing leaves your machine; Krutrim Cloud = their API processes it), and sentences being spoken aloud go to Microsoft's Edge TTS service. Pasted links are fetched from the target website directly.
+- **Standard web-server logs** (IP address, endpoint, timestamp — never your content) are the only trace a request leaves.
+
 ## Packages
 
 Already installed in `.venv/`. To reinstall: `./.venv/bin/pip install -r requirements.txt` (flask, requests, beautifulsoup4, pypdf)
